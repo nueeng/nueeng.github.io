@@ -13,8 +13,7 @@
     "clean": "gatsby clean",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
     "prettier": "prettier --write \"./**/*.{js,jsx,json,md}\"",
-    "lint": "eslint --ext .js,.jsx --ignore-pattern public .",
-    "deploy": "gatsby build && gh-pages -d public -b deploy"
+    "lint": "eslint --ext .js,.jsx --ignore-pattern public ."
   },
   "dependencies": {
     "@mdx-js/mdx": "^2.2.1",
