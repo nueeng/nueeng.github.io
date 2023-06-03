@@ -76,6 +76,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     });
   }
 };
+// Github Actions 추가하려고 넣은 코드
 exports.createSchemaCustomization = ({ actions }) => {
   const { createTypes } = actions;
   const typeDefs = `
