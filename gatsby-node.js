@@ -76,3 +76,16 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     });
   }
 };
+exports.createSchemaCustomization = ({ actions }) => {
+  const { createTypes } = actions;
+  const typeDefs = `
+    type SiteSiteMetadata {
+      # 기존 필드들...
+      author: String
+      bio: String
+      githubUrl: String
+      blogName: String
+    }
+  `;
+  createTypes(typeDefs);
+};
