@@ -81,11 +81,12 @@ exports.createSchemaCustomization = ({ actions }) => {
   const { createTypes } = actions;
   const typeDefs = `
     type SiteSiteMetadata {
-      // 기존 필드들...
+      blogName: String
+      title: String
       author: String
       bio: String
       githubUrl: String
-      blogName: String
+      blogUrl: String
     }
   `;
   createTypes(typeDefs);
