@@ -1,6 +1,6 @@
 ---
 title: "More About Blog"
-date: 2023-02-06 9:51:13
+date: 2023-06-04 9:51:13
 subtitle: "Do you want to know more about Gatsby Clean Blog Starter?"
 category: "Blog"
 draft: false
