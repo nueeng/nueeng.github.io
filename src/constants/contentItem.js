@@ -1,6 +1,6 @@
 export const CONTENTITEM = {
   TITLE: true,
-  SUBTITLE: true,
+  SUBTITLE: false,
   DATE: true,
   CONTENT: true,
 };

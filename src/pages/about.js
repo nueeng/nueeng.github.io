@@ -8,6 +8,7 @@ export default function About() {
       <div className="aboutContent">
         <div className="aboutTitle">About me </div>
         <hr />
+        <div>hi</div>
       </div>
     </div>
   );
