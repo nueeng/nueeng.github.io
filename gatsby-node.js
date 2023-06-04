@@ -76,20 +76,16 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     });
   }
 };
-
 // Github Actions 추가하려고 넣은 코드
 exports.createSchemaCustomization = ({ actions }) => {
   const { createTypes } = actions;
   const typeDefs = `
     type SiteSiteMetadata {
-      blogName: "누에의 개발로그",
-
-      title: "개발로그",
-      author: "nueeng",
-      bio: "누에의 개발로그",
-    
-      githubUrl: "https://github.com/nueeng",
-      blogUrl: "https://nueeng.github.io/",
+      // 기존 필드들...
+      author: String
+      bio: String
+      githubUrl: String
+      blogName: String
     }
   `;
   createTypes(typeDefs);
