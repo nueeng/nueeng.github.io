@@ -11,12 +11,12 @@
 }
 
 .navbarItem {
-  color: var(--lg-dark-gray);
+  color: var(--lg-black);
   font-size: var(--text-base);
   font-weight: var(--font-medium);
   text-decoration: none;
   &[data-ishome="true"] {
-    color: var(--lg-darkest-gray);
+    color: var(--lg-black);
     font-weight: var(--font-semibold);
   }
 }
