@@ -10,7 +10,7 @@
   svg {
     height: 18px;
     width: 18px;
-    color: var(--lg-dark-gray);
+    color: var(--lg-black);
     stroke-width: 3;
     transition: 0.2s ease-in-out;
   }
@@ -20,7 +20,7 @@
     }
   }
   &[data-selected="true"] {
-    color: var(--lg-darkest-gray);
+    color: var(--lg-black);
     font-weight: var(--font-semibold);
   }
 }

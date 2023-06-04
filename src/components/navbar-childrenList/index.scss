@@ -1,5 +1,5 @@
 .navbarChildrenList {
-  color: var(--lg-dark-gray);
+  color: var(--lg-black);
   font-size: var(--text-sm);
   font-weight: var(--font-normal);
   display: flex;
@@ -25,11 +25,11 @@
   svg {
     height: 16px;
     width: 16px;
-    color: var(--lg-dark-gray);
+    color: var(--lg-black);
     stroke-width: 2;
   }
   &[data-selected="true"] {
-    color: var(--lg-darkest-gray);
+    color: var(--lg-black);
     font-weight: var(--font-medium);
   }
 }

@@ -25,6 +25,7 @@
   pointer-events: none;
   hr {
     margin-top: 25px;
+    color: var(--lg-black);
   }
   &[data-showmenu="true"] {
     pointer-events: initial;
