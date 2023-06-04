@@ -1,5 +1,5 @@
 module.exports = {
-  blogName: "개발로그",
+  blogName: "누에의 개발로그",
 
   title: "개발로그",
   author: "nueeng",
