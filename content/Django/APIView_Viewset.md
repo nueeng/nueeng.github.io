@@ -5,8 +5,6 @@ subtitle: "viewset을 알아보자"
 category: "Django"
 draft: false
 ---
-
-# APIView vs Viewsets
   
 [Django APIView vs Viewsets Which one to Choose?](https://medium.com/@p0zn/django-apiview-vs-viewsets-which-one-to-choose-c8945e538af4)를 번역한 글입니다.
 
@@ -88,4 +86,4 @@ urlpatterns = [
 
 ---
 
-학습 - OOP 추상화, [Viewset Class Def - cdrf](https://www.cdrf.co/3.13/rest_framework.viewsets/GenericViewSet.html)
+학습 - OOP 추상화, [Viewset Class Def - cdrf](https://www.cdrf.co/3.13/rest_framework.viewsets/ViewSet.html)
