@@ -1,8 +1,8 @@
 ---
 title: "APIView vs Viewsets"
 date: 2023-06-05 20:22:13
-subtitle: "This is test md file"
-category: "Category1"
+subtitle: "viewset을 알아보자"
+category: "Django"
 draft: false
 ---
 
