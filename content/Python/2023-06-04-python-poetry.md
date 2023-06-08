@@ -30,19 +30,19 @@ pip보다 의존성 관리를 더욱 용이하게 해주는 패키지 관리자
 
 Django 설치 기준  
 
+- `pythton -m venv venv`, `source venv/scripts/activate`
+  
+  venv 설정
+
 - `poetry init`  
   
   project.toml 파일 생성
 
-- or (`poetry new project`
+- or `poetry new project`
 
-  poetry 프로젝트 시작)
+  poetry 프로젝트 시작
 
-- `pythton -m venv venv`
-  
-  venv 설정
-
-- `poetry env use python`  
+- `poetry env use python`
   
   poetry 쓰면서도 virtualenv 사용하기
 
@@ -50,7 +50,7 @@ Django 설치 기준
   
   pip의 `pip install -r requirements.txt`와 같음
 
-- `poetry add django`
+- `poetry add django` (제거할 때는 remove)
   
   pip install django가 poetry에선 add
 

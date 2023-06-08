@@ -78,7 +78,7 @@ urlpatterns = [
 
 3. APIView는 선택적으로 매개변수를 사용하여 자세한 커스터마이징을 할 수 있는 유연함이 있지만, Viewset은 일반적으로 기본 CRUD 메소드를 사용하여 작업하기 때문에 커스터마이징 가능성이 적습니다.  
 
-4. APIView는 코드를 직접 제어할 수 있기 때문에 유연성 수준이 높습니다. Viewset은 더 높은 수준의 추상화를 제공하며 모델 작업을 쉽게 처리하기 위해 미리 만들어져있는 메소드를 제공합니다.(기사 내용이 틀린 것 같습니다. 유연성이 낮다고 하고있네요)
+4. APIView는 코드를 직접 제어할 수 있기 때문에 유연성 수준이 높습니다. Viewset은 더 높은 수준의 추상화를 제공하며 모델 작업을 쉽게 처리하기 위해 미리 만들어져있는 메소드를 제공합니다.(원본 기사내용이 틀린 것 같습니다. 유연성이 낮다고 하고있네요)
 
 5. APIView는 Django의 기본 View 클래스에서 상속되었으며, Viewset은 Django Rest Framework의 특별한 ViewSet 클래스로부터 상속됩니다.
 
@@ -86,4 +86,4 @@ urlpatterns = [
 
 ---
 
-학습 - OOP 추상화, [Viewset Class Def - cdrf](https://www.cdrf.co/3.13/rest_framework.viewsets/ViewSet.html)
+추가학습 - OOP 추상화, [Viewset Class Def - cdrf](https://www.cdrf.co/3.13/rest_framework.viewsets/ViewSet.html)

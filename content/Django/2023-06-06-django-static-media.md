@@ -41,6 +41,8 @@ Django에서의 static, 즉 정적인 파일들은 images, JavaScript, CSS들이
         urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
         ```
 
+- HTTP Request Body의 Content-Type은 json이 아닌 form-data
+
 
 ## Deployment
 
