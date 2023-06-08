@@ -1,10 +1,12 @@
 ---
-title: "Django URL 실수"
+title: "Django URL 실수/ Test Command"
 date: 2023-06-08
-subtitle: "설계부터 URL을 잘 짜자"
+subtitle: "설계부터 URL을 잘 짜자 + Testcode"
 category: "Django"
 draft: false
 ---
+
+## URL Mistake
 
 ```python
 urlpatterns = [
@@ -65,6 +67,16 @@ class CampaignReviewUpdateDeleteTest(APITestCase):
 
 같은 url을 가리키고 있을 땐 후자는 무시된다는 사실을 알 수 있긴했지만 알아차리기까지 너무 오랜시간이 걸린 것 같다.
 
-한가지 다행인 점은 Test코드 작성할 때,  
+<br/>
+
+---
+
+## Unit Test Command
+
+한가지 다행인 점은 Test코드를 작성할 때,  
 `python manage.py test campaigns.tests.test_campaign_review.TestClass`
-이런 식으로 .으로 붙여 테스트의 경로를 지정해 개별적으로 테스트 해볼 수 있다는 사실을 알게되었다.
+와 같이 `.`으로 붙여 테스트의 경로를 지정해 개별적으로 테스트 해볼 수 있다는 사실을 알게되었다.
+
+https://docs.djangoproject.com/en/4.2/topics/testing/overview/
+
+공식문서 보고 더 자세하게 정리해보자.
