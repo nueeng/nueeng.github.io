@@ -5,6 +5,9 @@ import Theme from "../components/theme";
 
 import "./index.scss";
 
+import { defineCustomElements as deckDeckGoHighlightElement } from "@deckdeckgo/highlight-code/dist/loader";
+deckDeckGoHighlightElement();
+
 export const Layout = ({
   children,
   handlePageChange,

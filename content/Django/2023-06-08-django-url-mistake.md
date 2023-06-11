@@ -8,6 +8,8 @@ draft: false
 
 ## URL Mistake
 
+---
+
 ```python
 urlpatterns = [
     path('review/<int:campaign_id>/', views.CampaignReviewView.as_view(), name='campaign_review_view'),
@@ -65,18 +67,22 @@ class CampaignReviewUpdateDeleteTest(APITestCase):
 
 그러니 url이 get과 post함수만 작성했던 campaign_id로 인지해, 계속 `405 Method Not Allowed`가 status 코드로 날아왔던 것..
 
-같은 url을 가리키고 있을 땐 후자는 무시된다는 사실을 알 수 있긴했지만 알아차리기까지 너무 오랜시간이 걸린 것 같다.
+같은 url을 가리키고 있을 땐 후자는 무시된다는 사실을 알 수 있었다
 
 <br/>
 
----
-
 ## Unit Test Command
 
-한가지 다행인 점은 Test코드를 작성할 때,  
-`python manage.py test campaigns.tests.test_campaign_review.TestClass`
-와 같이 `.`으로 붙여 테스트의 경로를 지정해 개별적으로 테스트 해볼 수 있다는 사실을 알게되었다.
+---
 
-https://docs.djangoproject.com/en/4.2/topics/testing/overview/
+한가지 다행인 점은 Test코드를 작성할 때, 새로이 알게된 점들이 있다
+- `python manage.py test campaigns.tests.test_campaign_review.TestClass`  
+  와 같이 `.`으로 붙여 테스트의 경로를 지정해 개별적으로 테스트 해볼 수 있다
+
+- verbosity  
+  test 세부정보는 --verbosity 2 등으로 조절가능  
+  0 ~ 3 까지 지원
+
+https://docs.djangoproject.com/en/4.2/topics/testing/overview/  
 
 공식문서 보고 더 자세하게 정리해보자.

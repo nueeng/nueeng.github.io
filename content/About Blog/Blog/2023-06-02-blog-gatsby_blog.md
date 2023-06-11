@@ -1,6 +1,6 @@
 ---
 title: "Gatsby Blog"
-date: 2023-02-06 9:51:13
+date: 2023-06-02
 subtitle: "Gatsby Basic"
 category: "Blog"
 draft: false
@@ -22,8 +22,8 @@ https://www.gatsbyjs.com/docs/how-to/previews-deploys-hosting/how-gatsby-works-w
 
 https://www.gatsbyjs.com/docs/reference/gatsby-cli/
 
-- `gatsby develop`  
-  
-  localhost:8000에서 작업내역 로컬로 확인가능  
+- `gatsby develop`
+
+  localhost:8000에서 작업내역 로컬로 확인가능
 
 ### 나중에 댓글기능 / 검색기능 추가해보기
