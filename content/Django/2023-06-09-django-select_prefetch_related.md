@@ -53,6 +53,38 @@ Django에서 QuerySet이 작성된 순간, DB에서 데이터를 가져오지는
 
 <br/>
 
+.select_related("fundings")를 사용하는 경우와 사용하지 않는 경우의 차이점은 실제 데이터베이스 쿼리의 실행 방식과 결과에 있습니다.
+
+.select_related("fundings")를 사용하는 경우:
+
+    fundings 관계에 있는 모든 객체를 미리 가져옵니다.
+    이로 인해 추가적인 JOIN 쿼리가 실행되어 모든 Campaign 객체와 관련된 fundings 데이터가 한 번의 쿼리로 가져와집니다.
+    fundings 필드에 대한 역참조가 가능하며, 해당 데이터에 즉시 액세스할 수 있습니다.
+
+.select_related("fundings")를 사용하지 않는 경우:
+
+    Campaign 객체만 가져옵니다.
+    fundings 필드에 대한 역참조가 가능하지 않습니다.
+    실제로 fundings 필드에 접근하는 시점에서 필요한 데이터를 가져오기 위해 추가적인 쿼리가 실행됩니다. 이는 지연로딩(lazy loading)이라고도 알려져 있습니다.
+
+.select_related("fundings")를 사용하면 데이터베이스에서 Campaign 및 관련 fundings 데이터를 미리 가져오므로, 필요한 데이터를 한 번의 쿼리로 가져올 수 있습니다. 이는 데이터베이스 부하를 줄이고 성능을 향상시킬 수 있습니다. 그러나 fundings 데이터가 많은 경우에는 불필요한 데이터를 가져오게 되어 메모리 사용량이 늘어날 수도 있습니다.
+
+반면, .select_related("fundings")를 사용하지 않으면 데이터베이스에서는 필요한 데이터만 가져오게 되고, 필요한 시점에 추가적인 쿼리가 실행되므로 메모리 사용량은 감소합니다. 그러나 이는 필요한 데이터를 가져오기 위해 추가적인 쿼리 실행이 필요하므로, 데이터베이스 부하가 증가할 수 있습니다.
+
+따라서, .select_related("fundings")를 사용할지 여부는 성능과 메모리 사용량을 고려하여 결정해야 합니다. 만약 fundings 데이터가 많거나 자주 접근하는 필드라면 .select_related("fundings")를 사용하여 성능을 향상시킬 수 있습니다. 하지만 fundings 데이터가 크지 않거나 자주 접근하지 않는 필드라면 .select_related("fundings")를 사용하지 않아도 됩니다.
+
+---
+
+        2개를 붙이는게 select와 prefetch의 차이는 inner
+        2개의 테이블에 대해 조회
+        select는 쿼리에 inner가 붙어 1개의 쿼리로 반환
+        prefetch는 안쓰고 2개의 쿼리로 반환
+        별도의 쿼리가 필요하냐, 붙여진 쿼리가 필요하냐의 목적성을 염두
+        F객체 데이터의 값이 수정(update)될 때 유효성, 안전성을 보장, 파이썬연산이아닌 데이터베이스 연산으로 쿼리를 최적화
+        어노테이션
+
+print(queryset.query)로 확인해보기
+
 ## prefetch_related
 
 ---
