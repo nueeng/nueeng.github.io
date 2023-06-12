@@ -1,18 +1,16 @@
 ---
-title: "Gatsby 코드 하이라이팅"
+title: "Gatsby Highlighting Code"
 date: 2023-06-11
-subtitle: "Gatsby Basic"
+subtitle: "highlight code"
 category: "Blog"
 draft: false
 ---
 
-## Gatsby-remark-highlight-code
-
----
+# Gatsby-remark-highlight-code
 
 [공식문서](https://www.gatsbyjs.com/plugins/gatsby-remark-highlight-code/)
 
-### Install
+## Install
 
 ```bash
 npm install --save gatsby-transformer-remark gatsby-remark-highlight-code @deckdeckgo/highlight-code

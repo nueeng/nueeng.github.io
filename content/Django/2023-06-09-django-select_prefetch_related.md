@@ -1,5 +1,5 @@
 ---
-title: "Django select_related / prefetch_related"
+title: "select_related / prefetch_related"
 date: 2023-06-09
 subtitle: "설계부터 URL을 잘 짜자 + Testcode"
 category: "Django"

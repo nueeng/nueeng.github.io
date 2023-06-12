@@ -1,21 +1,19 @@
 ---
-title: "Django apscheduler 써보기"
+title: "Django apscheduler"
 date: 2023-06-10
 subtitle: "Advanced Python Scheduler"
 category: "Django"
 draft: false
 ---
 
-## Django apscheduler
+# Django apscheduler
 
----
-
-1. **Scheduler?**  
+1. **Scheduler**  
    코드 실행을 예약시켜 일정한 주기마다 실행될 수 있도록 해주는 Scheduler들이 있다.  
    회원들에게 일률적으로 보내는 메일, 모바일 application에서 보내는 push 알람들이 모두 이 Scheduler들로 보내는 것이라고 한다. 유명한 Scheduler로 Linux의 crontab이라는걸 많이 쓰는 것 같다.  
    파이썬에서는 [Advanced Python Scheduler](https://apscheduler.readthedocs.io/en/3.x/userguide.html)라는 라이브러리를 사용하는데, Django에서 편하게 사용할 수 있도록 해주는 패키지가 따로 있었다.  
    [PyPI django-apscheduler](https://pypi.org/project/django-apscheduler/)  
-   근데 결국 Django apscheduler도 기본 파이썬 apscheduler의 연장선이라, apscheduler를 잘 사용할 수 있어야 잘 응용할 수 있는 것 같다.
+   결국 Django apscheduler도 기본 파이썬 apscheduler의 연장선이라, apscheduler를 잘 사용할 수 있어야 응용할 수 있는 것 같다.
 
 2. **Install**
 

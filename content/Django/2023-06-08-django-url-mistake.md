@@ -1,5 +1,5 @@
 ---
-title: "Django URL 실수/ Test Command"
+title: "URL 실수/ Test Command"
 date: 2023-06-08
 subtitle: "설계부터 URL을 잘 짜자 + Testcode"
 category: "Django"
@@ -76,6 +76,7 @@ class CampaignReviewUpdateDeleteTest(APITestCase):
 ---
 
 한가지 다행인 점은 Test코드를 작성할 때, 새로이 알게된 점들이 있다
+
 - `python manage.py test campaigns.tests.test_campaign_review.TestClass`  
   와 같이 `.`으로 붙여 테스트의 경로를 지정해 개별적으로 테스트 해볼 수 있다
 
@@ -83,6 +84,6 @@ class CampaignReviewUpdateDeleteTest(APITestCase):
   test 세부정보는 --verbosity 2 등으로 조절가능  
   0 ~ 3 까지 지원
 
-https://docs.djangoproject.com/en/4.2/topics/testing/overview/  
+https://docs.djangoproject.com/en/4.2/topics/testing/overview/
 
 공식문서 보고 더 자세하게 정리해보자.
