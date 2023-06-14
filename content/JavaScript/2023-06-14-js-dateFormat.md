@@ -6,7 +6,7 @@ category: "JavaScript"
 draft: false
 ---
 
-# django와 dateFormat 맞추기
+# Django 백엔드와 dateFormat 맞추기
 
 ## 백엔드 실수
 
