@@ -26,4 +26,6 @@ https://www.gatsbyjs.com/docs/reference/gatsby-cli/
 
   localhost:8000에서 작업내역 로컬로 확인가능
 
+  `-p 3500`등의 옵션으로 포트 지정 가능
+
 ### 나중에 댓글기능 / 검색기능 추가해보기
