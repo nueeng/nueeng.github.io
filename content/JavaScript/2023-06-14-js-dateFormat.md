@@ -48,7 +48,7 @@ funding_serializer.is_valid()
 
 문제를 확인해보니..
 
-## JavaScript Date Format
+# JavaScript Date Format
 
 [Mozilla Date() 생성자](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Date/Date)
 
