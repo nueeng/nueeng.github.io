@@ -1,5 +1,5 @@
 ---
-title: "Poetr"
+title: "Poetry"
 date: 2023-06-04 10:51:13
 subtitle: "Poetry를 배워보자"
 category: "Python"
