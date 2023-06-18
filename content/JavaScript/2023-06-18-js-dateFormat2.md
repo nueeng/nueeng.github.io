@@ -36,3 +36,16 @@ const isAboutToClose = (endDate) => {
 ```
 
 그래서 위의 함수로 년/월/일을 js상의 데이터와 연산할 수 있도록 형태를 포매팅을 해준 뒤, `getDate()` 메소드로 날짜의 차이를 계산해서 마감임박 Badge를 달아줄 수 있었다.
+
+이외에 다양한 Date객체 연산
+
+```js
+console.log(date.getFullYear()); // 2023
+console.log(date.getMonth()); // 5 (JavaScript에서 월은 0부터 시작하므로 6월은 5로 표현됩니다.)
+console.log(date.getDate()); // 6 (일자)
+console.log(date.getHours()); // 0 (시간)
+console.log(date.getMinutes()); // 0 (분)
+console.log(date.getSeconds()); // 0 (초)
+console.log(date.getTime()); // 1675651200000 (타임스탬프)
+```
+
