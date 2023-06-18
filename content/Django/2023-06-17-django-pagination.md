@@ -10,7 +10,7 @@ draft: false
 
 [공식문서](https://www.django-rest-framework.org/api-guide/pagination/)
 
-페이지네이션을 사용할 경우 API가 `count`, `next`, `previous`, `results`로 달라진다
+페이지네이션을 사용할 경우 API Response가 `count`, `next`, `previous`, `results`로 달라진다.
 
 ```bash
 {
@@ -56,7 +56,7 @@ draft: false
 
 - 고정된 정렬을 볼 수 밖에 없고, 임의로 인덱싱할 수 없다.
 - 하지만 일관적으로 데이터를 불러올 수 있고 커서라는 포인터를 기준으로 전달하므로 데이터의 누락, 중복에서 자유롭다.
-- 모바일에서 선호되고, 구현이 조금 까다로운 것 같다..
+- 모바일에서 선호되고, 구현이 조금 까다로운 것 같다.. 프론트도 무한 스크롤 등... 추후 도전해보기
 
 <br/>
 
@@ -87,7 +87,7 @@ class CampaignView(APIView):
         return pagination_instance.get_paginated_response(paginated_data)
 ```
 
-paginate_queryset에 serialize한 데이터를 넘겨줄 때 .data를 붙여줘야한다
+paginate_queryset에 serialize한 데이터를 넘겨줄 때 .data를 붙여줘야한다.
 
 ```python
 # pagination.py를 만들어 customize
@@ -97,6 +97,6 @@ class StandardResultsSetPagination(PageNumberPagination):
     max_page_size = 1000
 ```
 
-`pagination.py`를 만들어 세부옵션을 조정할 수 있다
+`pagination.py`를 만들어 세부옵션을 조정할 수 있다.
 
-[cdrf BasePagination](https://www.cdrf.co/3.13/rest_framework.pagination/BasePagination.html)에서 DRF Builtin Pagination 확인할 수 있다
+[cdrf BasePagination](https://www.cdrf.co/3.13/rest_framework.pagination/BasePagination.html)에서 DRF Builtin Pagination 확인할 수 있다.
