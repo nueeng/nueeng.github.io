@@ -1,0 +1,51 @@
+---
+title: "Django Timezone"
+date: 2023-06-20
+subtitle: "Datetime, Timezone, UTC, localtime..."
+category: "Django"
+draft: false
+---
+
+# Django에서의 시간 데이터 관리
+
+[공식문서](https://docs.djangoproject.com/en/4.2/topics/i18n/timezones/)
+
+한국 기준으로 서비스를 제공하더라도 UTC시간 기준으로 데이터를 DB에 저장하는 것을 연습하는게 좋다.
+
+DB에서 UTC기준으로 모두 저장한 뒤, 로컬환경에 맞춰 보여주는 것이 합리적이다.
+
+한국에서는 시행하고 있지 않지만 특히 서구권에서는 서머타임 또는 DST(daylight saving time)라는 제도가 있는 나라들이 있기 때문이다.
+
+따라서 사용해야하는 설정은 `USE_TZ = True`인데, 기본 장고에서는 default로 False로 되어있지만, Django 5.0버전서부터는 default도 True로 변경될 예정이라고 한다.
+
+또, `django-admin startproject . `로 생성된 settings.py에는 기본적으로 `USE_TZ = True`가 설정되어 크게 신경쓰지 않아도 될 것 같다.
+
+<br/>
+
+## Naive datetime vs Aware datetime
+
+Django 뿐 아니라 파이썬에서 에러메세지로 자주 볼 수 있는 datetime의 개념이다.
+
+- Naive datetime object
+
+  - timezone information이 포함되어 있지 않음
+  - 시간대에 대한 정보 없이 로컬 시간을 나타내는데 사용됨.
+
+- Aware datetime object
+  - timezone information이 포함되어 있음.
+  - 관련해서 사용할 수 있는 라이브러리는 [pytz](https://pypi.org/project/pytz/)가 있음
+
+파이썬에서 빌트인으로 쓸 수 있는 `datetime.now()`는 tz information이 없는 naive이기 때문에 사용하지 않는 것이 좋다.(직접 지정시켜줄 수는 있다)
+`datetime.now()`를 쓰면서 시간 관련 연산하려고 하면 많은 에러를 볼 수 있었다..
+
+대신 `timezone.now()`를 사용하면 되는데, 차이점은 역시 Aware datetime object라는 것이다.
+
+정확히 말하면, `timezone.now()` 은 `USE_TZ` 세팅에 따라 naive or aware datetime 객체를 리턴한다.
+
+관련해서 django에서 사용할 수 있는 메소드들도 있는데, `is_aware(value)`는 value가 tz aware 객체인지에 따라 boolean을 리턴한다.
+
+한국 로컬시간이 꼭 필요한 경우에는 `timezone.localtime()`을 사용하자.
+
+[더 찾아보기](https://docs.djangoproject.com/en/4.2/ref/utils/#module-django.utils.timezone)
+
+<br/>
