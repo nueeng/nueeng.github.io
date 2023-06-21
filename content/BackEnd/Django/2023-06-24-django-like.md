@@ -1,3 +1,11 @@
+---
+title: "like 구현"
+date: 2023-06-20
+subtitle: ""
+category: "Django"
+draft: true
+---
+
 like_count가 필요한가???그냥 prefetched로 충분한가????
 사실 누가 참여했는지 정보는 백엔드 데이터ㅗㄹ 갖고있을만한가치가 있다고생각해서
 근데 likecount를 미리 계산해서 db에 박는게 맞나?

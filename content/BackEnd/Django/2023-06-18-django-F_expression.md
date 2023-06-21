@@ -1,5 +1,5 @@
 ---
-title: "class F"
+title: "F() expressions"
 date: 2023-06-18
 subtitle: "F() expressions"
 category: "Django"
@@ -23,4 +23,5 @@ reporter.name = "Tintin Jr."
 reporter.save()
 ```
 
-위 코드는 F객체가 두번 적용되서 save()할때마다 +1 되어 결국 의도치 않게 +2가 되는 코드임. F객체 사용할 때는 이런부분을 조심하면서 `save()`는 한번만 사용할 수 있도록 해야한다.
+위 코드는 F객체가 두번 적용되서 `save()`할때마다 +1 되어 결국 의도치 않게 +2가 되는 코드이다.  
+F객체 사용할 때는 이런부분을 조심하면서 `save()`는 한번만 사용할 수 있도록 해야한다.
