@@ -1,6 +1,6 @@
 ---
 title: "Django Method"
-date: 2023-06-20
+date: 2023-06-01
 subtitle: "Method"
 category: "Django"
 draft: true
