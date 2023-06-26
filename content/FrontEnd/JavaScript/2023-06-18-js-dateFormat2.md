@@ -1,5 +1,5 @@
 ---
-title: "자바스크립트 date 포맷2"
+title: "DateFormat 2"
 date: 2023-06-18
 subtitle: "JavaScript date format2"
 category: "JavaScript"
@@ -48,4 +48,3 @@ console.log(date.getMinutes()); // 0 (분)
 console.log(date.getSeconds()); // 0 (초)
 console.log(date.getTime()); // 1675651200000 (타임스탬프)
 ```
-

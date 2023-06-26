@@ -1,5 +1,5 @@
 ---
-title: "자바스크립트 date 포맷"
+title: "DateFormat 1"
 date: 2023-06-14
 subtitle: "JavaScript date format"
 category: "JavaScript"
