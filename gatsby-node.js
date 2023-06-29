@@ -1,68 +1,68 @@
 const path = require(`path`);
 const { createFilePath } = require("gatsby-source-filesystem");
 
-exports.createPages = ({ graphql, actions }) => {
+exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
   const blogPostTemplate = path.resolve(`./src/templates/blog-post.js`);
-  return graphql(
-    `
-      {
-        allMarkdownRemark(
-          filter: {
-            frontmatter: { title: { ne: "null" }, draft: { ne: true } }
-          }
-          sort: { fields: [frontmatter___date], order: DESC }
-          limit: 1000
-        ) {
-          edges {
-            node {
-              html
-              fields {
-                slug
-              }
-              frontmatter {
-                title
-                category
-              }
+
+  const result = await graphql(`
+  {
+    categories: allMarkdownRemark {
+      distinct(field: {frontmatter: {category: SELECT}})
+    }
+  }
+  `);
+
+  if (result.errors) {
+    throw result.errors;
+  }
+
+  const categories = result.data.categories.distinct;
+
+  for (const category of categories) {
+    const categoryPosts = await graphql(`
+    query ($category: String) {
+      posts: allMarkdownRemark(
+        filter: {
+          frontmatter: { category: { eq: $category }, draft: { ne: true } }
+        }
+        sort: { frontmatter: { date: DESC } }
+      ) {
+        edges {
+          node {
+            fields {
+              slug
             }
-            previous {
-              fields {
-                slug
-              }
-              frontmatter {
-                title
-              }
-            }
-            next {
-              fields {
-                slug
-              }
-              frontmatter {
-                title
-              }
+            frontmatter {
+              title
             }
           }
         }
       }
-    `
-  ).then((result) => {
-    if (result.errors) {
-      throw result.errors;
+    }    
+    `, { category });
+
+    if (categoryPosts.errors) {
+      throw categoryPosts.errors;
     }
 
-    result.data.allMarkdownRemark.edges.forEach((edge) => {
+    const posts = categoryPosts.data.posts.edges;
+
+    posts.forEach(({ node }, index) => {
       createPage({
-        path: edge.node.fields.slug,
+        path: node.fields.slug,
         component: blogPostTemplate,
         context: {
-          slug: edge.node.fields.slug,
-          previous: edge.next,
-          next: edge.previous,
+          slug: node.fields.slug,
+          previous: index === posts.length - 1 ? null : posts[index + 1].node,
+          next: index === 0 ? null : posts[index - 1].node,
+          category,
         },
       });
     });
-  });
+  }
 };
+
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions;
 
@@ -76,6 +76,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     });
   }
 };
+
 // Github Actions 추가하려고 넣은 코드
 exports.createSchemaCustomization = ({ actions }) => {
   const { createTypes } = actions;

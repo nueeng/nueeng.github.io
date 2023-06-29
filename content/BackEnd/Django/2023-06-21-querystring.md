@@ -45,7 +45,7 @@ Front에서 UX고려해 뒤로가기시 정렬, 필터값 남아있도록 해보
 
 Query String을 사용했으니 GET요청도 parameter를 포함해서 해야한다.
 
-<img src="../../../assets/content_images/query_params.png">
+<img src="query_params.png">
 
 ## 구현해본 코드
 

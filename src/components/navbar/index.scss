@@ -10,6 +10,7 @@
   min-height: $navbar-height-smallScreen;
   min-width: 100vw;
   background-color: var(--lg-pink);
+  z-index: 1;
   @include md {
     position: absolute;
     padding: 0 35px;

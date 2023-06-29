@@ -29,3 +29,5 @@ https://www.gatsbyjs.com/docs/reference/gatsby-cli/
   `-p 3500`등의 옵션으로 포트 지정 가능
 
 ### 나중에 댓글기능 / 검색기능 추가해보기
+
++SEO까지
