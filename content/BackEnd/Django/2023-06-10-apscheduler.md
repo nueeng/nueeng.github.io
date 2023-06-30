@@ -41,16 +41,31 @@ draft: false
 ---
 
 ```python
-views.py
-def check_campaign_status():
-    now = timezone.now()  # UTC로 찍힘
-    # now = timezone.localtime() # 한국 로컬타임 찍힘
-    print(now)
-    campaigns = Campaign.objects.filter(Q(status=2) | Q(status=3))
+# views.py
+class CampaignStatusChecker():
+    def check_campaign_status():
+        """
+        status가 1인 캠페인 중 완료 날짜가 되거나 지난 캠페인의
+        status를 2로 바꿉니다.
+        """
+        now = timezone.now()
+        campaigns = Campaign.objects.filter(status=1)
 
-    for campaign in campaigns:
-        if campaign.enddate <= now:
-            campaign.status = 4
+        for campaign in campaigns:
+            if campaign.campaign_end_date <= now:
+                campaign.status = 2
+                campaign.save()
+
+    def check_funding_success():
+        """
+        종료된 캠페인의 펀딩 성공여부를 판단해 펀딩에 실패한 캠페인의
+        status를 3으로 바꿉니다.
+        """
+        now = timezone.now()
+        campaigns = Campaign.objects.filter(status=2).filter(fundings__amount__lt=F("fundings__goal"))
+
+        for campaign in campaigns:
+            campaign.status = 3
             campaign.save()
 ```
 
@@ -74,8 +89,6 @@ def start():
     Blocking이 아닌 BackgroundScheduler를 활용하여 백그라운드에서 작동합니다.
     minute = '*/1' 로 1분마다 스케줄러 발동시켜 테스트해볼 수 있습니다.
     @scheduler.scheduled_job('cron', hour = '0', minute = '1', name = 'check')
-    위 코드로 매일 1시에 스케줄링하도록 할 예정이나, 테스트는 아직 못해봤습니다.
-
     """
     scheduler = BackgroundScheduler(timezone=settings.TIME_ZONE)
     scheduler.add_jobstore(DjangoJobStore(), "djangojobstore")
@@ -88,6 +101,36 @@ def start():
 
     scheduler.start()
 ```
+
+```python
+from apscheduler.schedulers.background import BackgroundScheduler
+from django_apscheduler.jobstores import DjangoJobStore
+from .views import CampaignStatusChecker
+from apscheduler.triggers.cron import CronTrigger
+
+
+def start():
+    """
+    작성자 : 최준영
+    내용 : 캠페인 status 체크 실행 함수입니다.
+    최초 작성일 : 2023.06.08
+    업데이트 일자 : 2023.06.30
+    """
+    campaign_scheduler = BackgroundScheduler()
+    campaign_scheduler.add_jobstore(DjangoJobStore(), "djangojobstore")
+
+    @campaign_scheduler.scheduled_job(CronTrigger(hour=8), name='check_campaign_status')
+    def check_campaign_status_job():
+        CampaignStatusChecker.check_campaign_status()
+
+    @campaign_scheduler.scheduled_job(CronTrigger(hour=8, minute=10), name='check_funding_success')
+    def check_funding_success_job():
+        CampaignStatusChecker.check_funding_success()
+
+    campaign_scheduler.start()
+```
+
+나중에 변경된 최종 실행함수
 
 ```python
 # apps.py
@@ -106,10 +149,4 @@ class CampaignsConfig(AppConfig):
             operator.start()
 ```
 
-<br/>
-
-##
-
----
-
-<br/>
+apps.py도 scheduler 실행을 위해 변경해야한다.

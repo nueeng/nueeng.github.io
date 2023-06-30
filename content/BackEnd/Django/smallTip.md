@@ -11,10 +11,10 @@ draft: false
 Bash 쉘에서
 
 ```bash
-find ./ -type f -name '000\*' -exec rm {} \;
+find ./ -path "*/migrations/*.py" -not -name "__init__.py" -delete
 ```
 
-- 경로를 잘 확인하고 써야한다. 하위 폴더 000~를 전부다 지운다.
+위 명령어가 잘 들어서 아래 명령어가 더 확실한 것 같다.
 
 ## django.db.migrations.exceptions.NodeNotFoundError 에러
 
@@ -35,3 +35,14 @@ python manage.py migrate
 ```bash
 pip install --upgrade --force-reinstall Django
 ```
+
+## Bash쉘
+
+명령어 입력하다가 다 지우기
+`Ctrl + C` or `Ctrl + U`
+
+## 일부 마이그레이션만 초기화?
+
+python manage.py migrate <app_name> zero
+python manage.py makemigrations <app_name>
+python manage.py migrate <app_name>
