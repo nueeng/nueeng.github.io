@@ -100,12 +100,12 @@ Q. 작성자, 제목내용, 댓글내용을 기준으로 검색기능 추가 시
 - Signal에 `@receiver`
 
   이캠페인 아이디를 통해서 필터카운트롤 통해서 갯수를 가져오고 멤버스가 넘지못하도록
-  리시버 포스트시그널을 감지하면 크리에이트라는 필드가있는데크리에이트가 아닐때 save(필드) 거기서 참가자 필드에 대한 수정이 일어나는걸 감지할 수 있음
+  리시버 포스트시그널을 감지하면 크리에이트라는 필드가있는데 create가 아닐때 save(필드) 거기서 참가자 필드에 대한 수정이 일어나는걸 감지할 수 있음
 
   ```
   post_save일어난후 pre_save일어나기전 sender=campagin
   def
-  members = kwargs[''참가자'']
+  members = kwargs['참가자']
   if not created and member:
   일 경우 아래를 시작하라
   ```
@@ -114,7 +114,7 @@ Q. 작성자, 제목내용, 댓글내용을 기준으로 검색기능 추가 시
   그냥 뷰에서 해도 될 것 같기는 하다
   모집인원과 +1했을때 같거나 작으면성공 안되면 실패
   participant를 카운트하고 member랑 비교
-  campaign_id Count participan의 갯수 values로 가져오고
+  campaign_id Count participant의 갯수 values로 가져오고
   queryset의 멤버랑 비교
   num = queryset.participant.count()
 
@@ -170,4 +170,4 @@ Q. 작성자, 제목내용, 댓글내용을 기준으로 검색기능 추가 시
 ```
 
 수정 시리얼라이저에 `partial=True`줘서 부분수정 가능하도록 해서
-값이 하나만 있어도 수정이 가능하게
+값이 하나만 있어도 수정이 가능하게 변경

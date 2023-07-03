@@ -14,9 +14,7 @@ Bash 쉘에서
 find ./ -path "*/migrations/*.py" -not -name "__init__.py" -delete
 ```
 
-위 명령어가 잘 들어서 아래 명령어가 더 확실한 것 같다.
-
-## django.db.migrations.exceptions.NodeNotFoundError 에러
+## django.db.migrations.exceptions.NodeNotFoundError
 
 ```bash
 find . -path "*/migrations/*.py" -not -name "__init__.py" -delete
@@ -30,7 +28,7 @@ python manage.py makemigrations
 python manage.py migrate
 ```
 
-## ModuleNotFoundError: No module named 'django.db.migrations.migration' 에러
+## ModuleNotFoundError: No module named 'django.db.migrations.migration'
 
 ```bash
 pip install --upgrade --force-reinstall Django
@@ -41,7 +39,7 @@ pip install --upgrade --force-reinstall Django
 명령어 입력하다가 다 지우기
 `Ctrl + C` or `Ctrl + U`
 
-## 일부 마이그레이션만 초기화?
+## app단위 마이그레이션만 초기화
 
 python manage.py migrate <app_name> zero
 python manage.py makemigrations <app_name>
