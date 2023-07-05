@@ -36,11 +36,10 @@ pip install --upgrade --force-reinstall Django
 
 ## Bash쉘
 
-명령어 입력하다가 다 지우기
-`Ctrl + C` or `Ctrl + U`
+명령어 입력하다가 다 지우기 `Ctrl + U`
 
 ## app단위 마이그레이션만 초기화
 
-python manage.py migrate <app_name> zero
-python manage.py makemigrations <app_name>
-python manage.py migrate <app_name>
+- python manage.py migrate <app_name> zero
+- python manage.py makemigrations <app_name>
+- python manage.py migrate <app_name>
