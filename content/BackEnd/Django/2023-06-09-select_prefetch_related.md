@@ -1,7 +1,7 @@
 ---
 title: "select_related / prefetch_related"
 date: 2023-06-09
-subtitle: "설계부터 URL을 잘 짜자 + Testcode"
+subtitle: "Django ORM Query 자세히 들여다보기"
 category: "Django"
 draft: false
 ---
@@ -62,6 +62,8 @@ Django에서 QuerySet이 작성된 순간, DB에서 데이터를 가져오지는
   필드에 대한 역참조가 가능하며, 해당 데이터에 즉시 액세스할 수 있다.
   한번의 쿼리로 가져올 수 있어 DB부하를 줄이고 성능을 향상시킬 수 있다. 하지만 `.select_related()`로 JOIN하는 필드가 많을 경우 메모리 사용량이 늘어날 수 있다.
 
+<br/>
+
 - `.select_related()`를 사용하지 않는 경우:
 
   쿼리문으로 실행한 객체만 가져온다.
@@ -71,7 +73,7 @@ Django에서 QuerySet이 작성된 순간, DB에서 데이터를 가져오지는
   필요한 데이터만 쿼리로 가져오고, 필요한 시점에 쿼리가 실행되어 메모리 사용량은 적을 수 있다.
   하지만 추가 쿼리실행이 필요해 DB부하가 증가할 수 있다.
 
-### 결론
+## 결론
 
 `.select_related()`를 사용할지 여부는 성능과 메모리 사용량을 고려하여 결정해야 한다.  
 만약 JOIN하는 필드의 데이터가 많거나 자주 접근하는 필드라면 `.select_related()`를 사용하여 성능을 향상시킬 수 있다. 하지만 JOIN하는 필드의 데이터가 크지 않거나 자주 접근하지 않는 필드라면 `.select_related()`를 사용하지 않는것이 좋을 수도 있다.
@@ -82,12 +84,49 @@ Django에서 QuerySet이 작성된 순간, DB에서 데이터를 가져오지는
 
 ---
 
-    2개를 붙이는게 select와 prefetch의 차이는 inner
-    2개의 테이블에 대해 조회
-    select는 쿼리에 inner가 붙어 1개의 쿼리로 반환
-    prefetch는 안쓰고 2개의 쿼리로 반환
-    별도의 쿼리가 필요하냐, 붙여진 쿼리가 필요하냐의 목적성을 염두
-    F객체 데이터의 값이 수정(update)될 때 유효성, 안전성을 보장, 파이썬연산이아닌 데이터베이스 연산으로 쿼리를 최적화
-    어노테이션
+> 2개를 붙이는게 select와 prefetch의 차이는 inner
+> 2개의 테이블에 대해 조회
+> select는 쿼리에 inner join으로 1개의 쿼리로 반환
+> prefetch는 안쓰고 2개의 쿼리로 반환
+> 별도의 쿼리가 필요하냐, 붙여진 쿼리가 필요하냐의 목적성을 염두
+> F객체 데이터의 값이 수정(update)될 때 유효성, 안전성을 보장, 파이썬 연산이아닌 데이터베이스 연산으로 쿼리를 최적화
+> 어노테이션도 활용해보기
+> print(queryset.query)로 확인해보기
 
-print(queryset.query)로 확인해보기
+## 참고
+
+이해에 도움이 될 stackoverflow 글.
+
+https://stackoverflow.com/questions/31237042/whats-the-difference-between-select-related-and-prefetch-related-in-django-orm
+
+> `select_related`: when the object that you're going to be selecting is a single object, so `OneToOneField` or a `ForeignKey`
+>
+> `prefetch_related`: when you're going to get a "set" of things, so `ManyToManyFields` as you stated or reverse `ForeignKey`s.
+>
+> Just to clarify what I mean by reverse ForeignKeys, here's an example:
+>
+> ```python
+> class ModelA(models.Model):
+> pass
+>
+> class ModelB(models.Model):
+> a = ForeignKey(ModelA)
+>
+> # Forward ForeignKey relationship
+>
+> ModelB.objects.select_related('a').all()
+>
+> # Reverse ForeignKey relationship
+>
+> ModelA.objects.prefetch_related('modelb_set').all()
+> ```
+>
+> The difference is that:
+>
+> `select_related` does an SQL join and therefore gets the results back as part of the table from the SQL server
+> `prefetch_related` on the other hand executes another query and therefore reduces the redundant columns in the original object (ModelA in the above example)
+> You may use prefetch_related for anything that you can use select_related for.
+>
+> The tradeoffs are that prefetch_related has to create and send a list of IDs to select back to the server, this can take a while. I'm not sure if there's a nice way of doing this in a transaction, but my understanding is that Django always just sends a list and says SELECT ... WHERE pk IN (...,...,...) basically. In this case if the prefetched data is sparse (let's say U.S. State objects linked to people's addresses) this can be very good, however if it's closer to one-to-one, this can waste a lot of communications. If in doubt, try both and see which performs better.
+>
+> Everything discussed above is basically about the communications with the database. On the Python side however `prefetch_related` has the extra benefit that a single object is used to represent each object in the database. With `select_related` duplicate objects will be created in Python for each "parent" object. Since objects in Python have a decent bit of memory overhead this can also be a consideration.
