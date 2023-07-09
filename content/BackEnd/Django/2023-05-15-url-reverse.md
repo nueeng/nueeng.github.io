@@ -46,4 +46,4 @@ url들이 각 뷰에 대해 app단위로 관리되고 있는 django에서 url이
 
 참고링크:
 [Django 공식문서 - reverse()](https://docs.djangoproject.com/en/4.2/ref/urlresolvers/)
-[초보몽키의 개발공부로그](https://wayhome25.github.io/django/2017/05/05/django-url-reverse/) - 꼭 읽어보기 너무 잘 정리되어있음
+[초보몽키의 개발공부로그](https://wayhome25.github.io/django/2017/05/05/django-url-reverse/)

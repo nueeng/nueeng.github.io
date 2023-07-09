@@ -31,7 +31,11 @@ class User(models.Model):
 
 `ForeignKey(unique=True)`와 `OneToOneField`는 같은건데, 후자를 써야함(전자는 Warning Message)
 
-## Queryset
+## FK가 두개인 경우?
+
+FK로 하나의 모델에 두개의 FK가 연결된 경우나 ManytoMany의 경우는 꼭 `related_name`을 설정해줘야 한다. 모델의 클래스에 `_set`을 붙여나가므로 어느 FK의 역참조 이름인지 알 수 없기 때문.
+
+# Queryset
 
 Queryset은 Object의 집합임.
 `.all()`, `.get()`, `.filter()`등을 써서 불러온 것은 모두 queryset으로 불러오는것!(queryset 갯수가 0개이든 1개이든 2개이상이든 상관 X)

@@ -1,6 +1,6 @@
 ---
 title: "Django small Tips"
-date: 2023-06-04
+date: 2023-05-24
 subtitle: "small tip"
 category: "Django"
 draft: false
