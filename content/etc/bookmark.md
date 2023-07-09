@@ -12,6 +12,7 @@ draft: false
 
 - [중급 파이썬: 파이썬 팁들](https://ddanggle.gitbooks.io/interpy-kr/content/)
 - [파이썬 언더스코어(\_)에 대하여](https://mingrammer.com/underscore-in-python/)
+- [[번역] Why numbering should start at zero](https://shoark7.github.io/programming/knowledge/why-numbering-should-start-at-zero-kr)
 
 ## Django
 
