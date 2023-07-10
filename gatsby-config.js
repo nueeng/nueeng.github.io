@@ -7,7 +7,7 @@ const metaConfig = require("./gatsby-metaconfig");
 module.exports = {
   siteMetadata: {
     ...metaConfig,
-    blogName: "누에의 개발로그",
+    blogName: "Blog",
 
     title: "개발로그",
     author: "nueeng",
