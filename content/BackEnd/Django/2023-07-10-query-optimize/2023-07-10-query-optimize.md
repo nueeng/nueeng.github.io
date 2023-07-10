@@ -1,6 +1,6 @@
 ---
 title: "Query Optimize"
-date: 2023-07-09
+date: 2023-07-10
 subtitle: "Query Optimize"
 category: "Django"
 draft: false
@@ -63,6 +63,8 @@ urlpatterns = [
     path("__debug__/", include("debug_toolbar.urls")),
 ]
 ```
+
+---
 
 ## Optimizing
 
