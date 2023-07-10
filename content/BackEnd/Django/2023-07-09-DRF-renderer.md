@@ -1,6 +1,6 @@
 ---
 title: "DRF renderer"
-date: 2023-07-08
+date: 2023-07-09
 subtitle: "DRF renderer"
 category: "Django"
 draft: false
