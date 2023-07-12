@@ -70,7 +70,7 @@ urlpatterns = [
 
 ![before](before-serializer.png)
 
-시리얼라이저를 디테일 view와 리스트 view를 공유해서 사용중이었기에 쓸데없는 데이터들을 너무 많이 가져오고 있었다.
+serializer를 디테일 view와 리스트 view를 공유해서 사용중이었기에 쓸데없는 데이터들을 너무 많이 가져오고 있었다.
 
 ```python
 class CampaignListSerializer(serializers.ModelSerializer):
@@ -106,7 +106,7 @@ class CampaignListSerializer(serializers.ModelSerializer):
         return obj.participant.count()
 ```
 
-필요한 데이터만 가져와 직렬화할 수 있도록 따로 시리얼라이저를 만든 뒤 확인해보니
+필요한 데이터만 가져와 직렬화할 수 있도록 따로 serializer를 만든 뒤 확인해보니
 
 ![all()](all.png)
 
