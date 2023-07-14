@@ -19,33 +19,35 @@ const PostNavigation = ({ data, selectedCategory }) => {
   };
 
   return (
-    <div className="postNavigation">
-      <div
-        onClick={() => {
-          handleClick(previous?.fields.slug);
-        }}
-      >
-        {previous && (
-          <div className="postNavButton">
-            <ChevronLeft />
-            {preTitle}
-          </div>
-        )}
-      </div>
-      <div
-        onClick={() => {
-          handleClick(next?.fields.slug);
-        }}
-      >
-        {next && (
-          <div className="postNavButton">
-            {nextTitle}
-            <ChevronRight />
-          </div>
-        )}
+    <>
+      <div className="postNavigation">
+        <div
+          onClick={() => {
+            handleClick(previous?.fields.slug);
+          }}
+        >
+          {previous && (
+            <div className="postNavButton">
+              <ChevronLeft />
+              {preTitle}
+            </div>
+          )}
+        </div>
+        <div
+          onClick={() => {
+            handleClick(next?.fields.slug);
+          }}
+        >
+          {next && (
+            <div className="postNavButton">
+              {nextTitle}
+              <ChevronRight />
+            </div>
+          )}
+        </div>
       </div>
       <Utterances />
-    </div>
+    </>
   );
 };
 export default PostNavigation;
