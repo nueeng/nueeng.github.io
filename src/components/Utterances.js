@@ -15,7 +15,7 @@ class Utterances extends React.Component {
     scriptEl.async = true
     scriptEl.src = 'https://utteranc.es/client.js'
     scriptEl.setAttribute('repo', 'nueeng/nueeng.github.io')
-    scriptEl.setAttribute('issue-term', 'title')
+    scriptEl.setAttribute('issue-term', 'url')
     scriptEl.setAttribute('theme', 'github-light')
     scriptEl.setAttribute('crossorigin', 'anonymous')
     this.commentsEl.current.appendChild(scriptEl)

@@ -6,6 +6,8 @@ import "./index.scss";
 import { ChevronLeft } from "../../../assets/icons/chevronLeft";
 import { ChevronRight } from "../../../assets/icons/chevronRight";
 
+import Utterances from "../Utterances";
+
 const PostNavigation = ({ data, selectedCategory }) => {
   const { next, previous } = data;
   const preTitle = previous?.frontmatter.title || "";
@@ -42,6 +44,7 @@ const PostNavigation = ({ data, selectedCategory }) => {
           </div>
         )}
       </div>
+      <Utterances />
     </div>
   );
 };
